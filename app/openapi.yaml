@@ -1,0 +1,268 @@
+openapi: 3.0.0
+info:
+  title: Flask API
+  description: API per operazioni matematiche e manipolazione di stringhe
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Server locale
+
+paths:
+  /add:
+    get:
+      summary: Somma due numeri
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Somma dei numeri
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: number
+        "400":
+          description: Input non valido
+
+  /sub:
+    get:
+      summary: Sottrae due numeri
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Differenza tra i numeri
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: number
+        "400":
+          description: Input non valido
+
+  /mul:
+    get:
+      summary: Moltiplica due numeri
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Prodotto dei numeri
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: number
+        "400":
+          description: Input non valido
+
+  /div:
+    get:
+      summary: Divide due numeri
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Risultato della divisione
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: number
+        "400":
+          description: Divisione per zero o input non valido
+
+  /mod:
+    get:
+      summary: Calcola il modulo tra due numeri
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Resto della divisione
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: number
+        "400":
+          description: Divisione per zero o input non valido
+
+  /concat:
+    get:
+      summary: Concatena due stringhe
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Stringa concatenata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: string
+        "400":
+          description: Input non valido
+
+  /upper:
+    get:
+      summary: Converte una stringa in maiuscolo
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Stringa in maiuscolo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: string
+
+  /lower:
+    get:
+      summary: Converte una stringa in minuscolo
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Stringa in minuscolo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: string
+
+  /random:
+    get:
+      summary: Genera un numero casuale tra due valori
+      parameters:
+        - name: a
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: b
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Numero casuale generato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: integer
+        "400":
+          description: Input non valido
+
+  /last:
+    get:
+      summary: Restituisce l'ultima operazione eseguita
+      responses:
+        "200":
+          description: Ultima operazione eseguita
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: string
+        "404":
+          description: Nessuna operazione trovata
+
+  /crash:
+    get:
+      summary: Simula il crash del server
+      responses:
+        "200":
+          description: Il server è stato chiuso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  s:
+                    type: string
